@@ -1,0 +1,22 @@
+/* all the variables */
+
+/* Grid */
+$column-count: 12 !default;
+$gap: 0.8% !default;
+
+/* Media query */
+$small: 30em !default;
+$medium:48em !default;
+$large: 64em !default;
+
+/* colors */
+$background: #333;
+$primary-color: #d64541;
+$secondary-color: #049372;
+$default-font-color: #fcfcfc;
+$link-color: #b0b0b0;
+
+/* font specific */
+$font: Arial, sans-serif !default;
+$size: 1em !default;
+$line-height: 1.2 !default;

@@ -1,0 +1,9 @@
+/* Media query */
+@mixin mediaquery($media) {
+	@if $media == medium {
+		@media (min-width: $medium) {@content;}
+	}
+	@else if $media == large {
+		@media (min-width: $large) {@content;}
+	}
+}

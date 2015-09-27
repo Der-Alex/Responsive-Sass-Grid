@@ -1,0 +1,85 @@
+/*
+	Responsive Grid.
+*/
+
+/*
+		This is how the grid works:
+		Loop through the columns and create .col-n-of-m classes
+		that define the column width.
+		push-n and pull-n define the push and pull behaviour of a column.
+		Default is 12 columns via $column-count
+*/
+
+@for $i from 1 through $column-count {
+	.col-#{$i}-of-#{$column-count} {
+		@if($i == 1) {
+			width: 25%;
+		} @else if($column-count / $i == 2) {
+			width: 50%;
+		} @else {
+			width: 100%;
+		}
+		@include mediaquery(large) {
+			width: ($i / $column-count) * 100%;
+		}
+	}
+	.push-#{$i} {
+		@include mediaquery(large) {
+			left: ($i / $column-count) * 100%;
+		}
+	}
+	.pull-#{$i} {
+		@include mediaquery(large) {
+			right: ($i / $column-count) * 100%;
+		}
+	}
+}
+
+.col-4-of-12 {
+	@include mediaquery(medium) {
+		width: (100% / 3);
+	}
+}
+
+/* Some extra styling */
+.container {
+	padding: 0 $gap;
+
+	.row {
+		margin: 0 ($gap * -1);
+
+		> [class*="col-"] {
+			display: block;
+			float: left;
+			margin: 0;
+			position: relative;
+			padding: .25em $gap;
+
+			> span {
+				background: $primary-color;
+				color: $default-font-color;
+				display: block;
+				@extend %font;
+				padding: 1em .25em;
+				min-height: 3em;
+				text-align: center;
+			}
+		}
+
+		> h1[class*="col-"] {
+			margin: .5em 0 0 0;
+		}
+		> h2[class*="col-"] {
+			margin: 0 0 .5em 0;
+		}
+
+		.secondary-color {
+
+			> span {
+				background: $secondary-color;
+			}
+		}
+
+		@extend %clr;
+	}
+}

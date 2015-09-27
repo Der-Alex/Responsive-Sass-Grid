@@ -1,0 +1,11 @@
+/* clearfix placeholder selector*/
+%clr {
+	&:before,
+	&:after {
+		content:"";
+		display:table;
+	}
+	&:after {
+		clear: both;
+	}
+}
