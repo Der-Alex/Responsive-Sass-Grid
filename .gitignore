@@ -1,2 +1,5 @@
 # ignore the node modules
 grid/node_modules/
+grid/_ui/gen/css/combined/
+grid/_ui/gen/css/style.css
+grid/_ui/gen/css/style.css.map
