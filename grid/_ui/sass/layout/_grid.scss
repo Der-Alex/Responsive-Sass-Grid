@@ -10,34 +10,68 @@
 		Default is 12 columns via $column-count
 */
 
-@for $i from 1 through $column-count {
-	.col-#{$i}-of-#{$column-count} {
-		@if($i == 1) {
-			width: 25%;
-		} @else if($column-count / $i == 2) {
-			width: 50%;
-		} @else {
-			width: 100%;
-		}
-		@include mediaquery(large) {
-			width: ($i / $column-count) * 100%;
-		}
+/*
+		Mobile first. So we have default classes for mobile
+
+*/
+.full {
+	width: 100%;
+}
+.half {
+	width: 50%;
+}
+.one-third {
+	width: (100% / 3);
+}
+.two-third {
+	width: (100% / 3) * 2;
+}
+.one-quarter {
+	width: 25%;
+}
+.three-quarter {
+	width: 75%;
+}
+
+/*
+		For medium sized devices we will have a prefix m-.
+		Hope that works
+*/
+@include mediaquery(medium) {
+	.m-full {
+		width: 100%;
 	}
-	.push-#{$i} {
-		@include mediaquery(large) {
-			left: ($i / $column-count) * 100%;
-		}
+	.m-half {
+		width: 50%;
 	}
-	.pull-#{$i} {
-		@include mediaquery(large) {
-			right: ($i / $column-count) * 100%;
-		}
+	.m-one-third {
+		width: (100% / 3);
+	}
+	.m-two-third {
+		width: (100% / 3) * 2;
+	}
+	.m-one-quarter {
+		width: 25%;
+	}
+	.m-three-quarter {
+		width: 75%;
 	}
 }
 
-.col-4-of-12 {
-	@include mediaquery(medium) {
-		width: (100% / 3);
+/*
+		Let's loop for a large device grid based on a variable column count
+*/
+@for $i from 1 through $column-count {
+	@include mediaquery(large) {
+		.col-#{$i}-of-#{$column-count} {
+			width: ($i / $column-count) * 100%;
+		}
+		.push-#{$i} {
+			left: ($i / $column-count) * 100%;
+		}
+		.pull-#{$i} {
+			right: ($i / $column-count) * 100%;
+		}
 	}
 }
 
@@ -48,29 +82,42 @@
 	.row {
 		margin: 0 ($gap * -1);
 
-		> [class*="col-"] {
+		> [class*="col-"],
+		> .full,
+		> .half,
+		> [class*=".one-"],
+		> [class*=".two-"],
+		> [class*=".three-"] {
 			display: block;
 			float: left;
 			margin: 0;
 			position: relative;
-			padding: .25em $gap;
+			padding: .30em $gap;
 
 			> span {
 				background: $primary-color;
 				color: $default-font-color;
 				display: block;
 				@extend %font;
+				height: 50px;
 				padding: 1em .25em;
-				min-height: 3em;
 				text-align: center;
 			}
 		}
 
-		> h1[class*="col-"] {
+		> h1[class*="col-"],
+		> h1.full {
 			margin: .5em 0 0 0;
+			> span {
+				height: 75px;
+			}
 		}
-		> h2[class*="col-"] {
+		> h2[class*="col-"],
+		> h2.full {
 			margin: 0 0 .5em 0;
+			> span {
+				height: 75px;
+			}
 		}
 
 		.secondary-color {
