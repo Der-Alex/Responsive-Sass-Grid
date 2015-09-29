@@ -61,8 +61,8 @@
 /*
 		Let's loop for a large device grid based on a variable column count
 */
-@for $i from 1 through $column-count {
-	@include mediaquery(large) {
+@include mediaquery(large) {
+	@for $i from 1 through $column-count {
 		.col-#{$i}-of-#{$column-count} {
 			width: ($i / $column-count) * 100%;
 		}
@@ -81,6 +81,7 @@
 
 	.row {
 		margin: 0 ($gap * -1);
+		overflow: hidden;
 
 		> [class*="col-"],
 		> .full,
@@ -92,32 +93,28 @@
 			float: left;
 			margin: 0;
 			position: relative;
-			padding: .30em $gap;
+			padding: $gap;
 
 			> span {
 				background: $primary-color;
 				color: $default-font-color;
 				display: block;
 				@extend %font;
-				height: 50px;
-				padding: 1em .25em;
+				min-height: 60px;
+				padding: $gap;
 				text-align: center;
+			}
+
+			> .row {
+				margin: 0;
+				padding: $gap;
+				background: $third-color;
 			}
 		}
 
-		> h1[class*="col-"],
-		> h1.full {
-			margin: .5em 0 0 0;
-			> span {
-				height: 75px;
-			}
-		}
-		> h2[class*="col-"],
-		> h2.full {
-			margin: 0 0 .5em 0;
-			> span {
-				height: 75px;
-			}
+		> h1.full > span,
+		> h2.full > span {
+			height: inherit;
 		}
 
 		.secondary-color {

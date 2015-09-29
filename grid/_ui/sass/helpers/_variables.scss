@@ -2,7 +2,7 @@
 
 /* Grid */
 $column-count: 12 !default;
-$gap: 0.8% !default;
+$gap: 5px !default;
 
 /* Media query */
 $small: 30em !default;
@@ -13,6 +13,7 @@ $large: 64em !default;
 $background: #333;
 $primary-color: #d64541;
 $secondary-color: #049372;
+$third-color: #555;
 $default-font-color: #fcfcfc;
 $link-color: #b0b0b0;
 
