@@ -2,7 +2,9 @@ module.exports = function(grunt) {
 	"use strict";
 	// Initialize the config
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON("package.json"),
+		// Base path
+		dir: 'ui',
 		// Grunt-sass
 		sass: {
 			options: {
@@ -10,7 +12,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'_ui/gen/css/style.css': '_ui/sass/*.scss'
+					"<%= dir %>/gen/css/style.css": "<%= dir %>/sass/*.scss"
 				}
 			}
 		},
@@ -21,7 +23,7 @@ module.exports = function(grunt) {
 			},
 			your_target: {
 				files: {
-					'_ui/gen/css/combined': ['_ui/gen/css/style.css']
+					"<%= dir %>/gen/css/combined": ["<%= dir %>/gen/css/style.css"]
 				}
 			}
 		},
@@ -29,7 +31,7 @@ module.exports = function(grunt) {
 		cssmin: {
 			target: {
 				files: {
-					'_ui/gen/css/style.min.css': ['_ui/gen/css/combined/*.css']
+					"<%= dir %>/gen/css/style.min.css": ["<%= dir %>/gen/css/combined/*.css"]
 				}
 			}
 		},
@@ -37,15 +39,15 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 			// Watches all Sass or Scss files recursive within the sass folder
-			files: ['_ui/sass/**/*.scss'],
+			files: ["<%= dir %>/sass/**/*.scss"],
 			// runs the task `sass` and cssmin whenever any watched file changes
-			tasks: ['sass', 'cmq', 'cssmin:target']
+			tasks: ["sass", "cmq", "cssmin:target"]
 			}
 		},
 	});
-	grunt.loadNpmTasks('grunt-sass');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-combine-media-queries');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.registerTask('default', ['sass', 'watch', 'cmq', 'cssmin']);
+	grunt.loadNpmTasks("grunt-sass");
+	grunt.loadNpmTasks("grunt-contrib-watch");
+	grunt.loadNpmTasks("grunt-combine-media-queries");
+	grunt.loadNpmTasks("grunt-contrib-cssmin");
+	grunt.registerTask("default", ["sass", "watch", "cmq", "cssmin"]);
 };

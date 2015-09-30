@@ -11,6 +11,12 @@
 */
 
 /*
+		overwrite the $page-width
+*/
+
+// $page-width: 960px;
+
+/*
 		Mobile first. So we have default classes for mobile
 
 */
@@ -77,6 +83,8 @@
 
 /* Some extra styling */
 .container {
+	margin: 0 auto;
+	max-width: $page-width;
 	padding: 0 $gap;
 
 	.row {
