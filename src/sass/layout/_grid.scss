@@ -1,0 +1,165 @@
+/*
+  Responsive SASS Grid.
+*/
+
+/*
+  This is how the grid works:
+  Loop through the columns and create .col-n-of-m classes
+  that define the column width.
+  push-n and pull-n define the push and pull behaviour of a column.
+  Default is 12 columns via $column-count.
+*/
+
+/*
+  The grid needs some default variables.
+  These are:
+  - $column-count: the amount of columns, default 12.
+  - $page-width: the maximum width of the page, default 80rem (1280px)
+*/
+
+$column-count: 12 !default;
+$page-width: 80rem !default;
+
+/*
+  The grid rows need a clearfix.
+  So we use a clearfix placeholder selector, because this is a good place to use one!
+*/
+
+%clr {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/*
+  The grid is mobile first. So we need some media queries for medium and big sized layouts.
+*/
+
+$small: 30rem !default;
+$medium:48rem !default;
+$large: 64rem !default;
+
+@mixin mediaquery($media) {
+  @if $media == medium {
+    @media (min-width: $medium) {
+      @content;
+    }
+  } @else if $media == large {
+    @media (min-width: $large) {
+      @content;
+    }
+  }
+}
+
+/*
+  The grid itself. It is mobile first.
+  I think that the most common sizes for small devices are:
+  - full
+  - half
+  - third
+  - quarter
+  I am sure, there don't have to be more column types for mobile.
+*/
+
+.full {
+  width: 100%;
+}
+
+.half {
+  width: 50%;
+}
+
+.one-third {
+  width: (100% / 3);
+}
+
+.two-third {
+  width: (100% / 3) * 2;
+}
+
+.one-quarter {
+  width: 25%;
+}
+
+.three-quarter {
+  width: 75%;
+}
+
+/*
+  For medium sized devices we will have a prefix m-.
+  Maybe i'll add fifths here...
+*/
+@include mediaquery(medium) {
+  .m-full {
+    width: 100%;
+  }
+  .m-half {
+    width: 50%;
+  }
+  .m-one-third {
+    width: (100% / 3);
+  }
+  .m-two-third {
+    width: (100% / 3) * 2;
+  }
+  .m-one-quarter {
+    width: 25%;
+  }
+  .m-three-quarter {
+    width: 75%;
+  }
+}
+
+/*
+  For large layouts we use the .col-n-of-m classes.
+  Let's loop from 1 to the value of column-count (def: 12).
+  For every class we create a percentage based width.
+  Also we create the push-n and pull-n classes.
+*/
+@include mediaquery(large) {
+  @for $i from 1 through $column-count {
+    .col-#{$i}-of-#{$column-count} {
+      width: ($i / $column-count) * 100%;
+    }
+    .push-#{$i} {
+      left: ($i / $column-count) * 100%;
+    }
+    .pull-#{$i} {
+      right: ($i / $column-count) * 100%;
+    }
+  }
+  [class*="push"],[class*="pull"] { position: relative; }
+}
+
+/*
+  When you have a container with default padding
+  you could use a negative margin for the rows
+  margin: 0 ($gap * -1);
+*/
+.row {
+  box-sizing: border-box;
+  margin: 0 auto;
+  overflow: hidden;
+
+  /*
+    Rows don't have to be used without columns!
+    So here we define every direct child of .row and it's behaviour
+  */
+  > * {
+    box-sizing: inherit;
+    display: block;
+    float: left;
+    margin: 0;
+  }
+
+  /*
+    Last but not least we extend our .row class with the clearfix.
+  */
+  @extend %clr;
+}
+

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="de"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simple responsive SASS Grid</title>
+  <style>
+    * {
+      font: 1rem/1.5 Arial, sans-serif;
+      color: #fcfcfc;
+    }
+    body {
+      background: #333;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2, h2 a {
+      font-size: 1.5rem;
+    }
+    a {
+      color: #ffab00;
+    }
+    .row > * {
+      padding: .25rem;
+    }
+    .row > * > .row {
+      background: #555;
+    }
+    .cell {
+      background: #d64541;
+      display: block;
+      min-height: 3.5rem;
+      padding: .25rem;
+      text-align: center;
+    }
+    .row > * > .t-l {
+      text-align: left;
+    }
+    .secondary-color > .cell {
+      background: #049372;
+    }
+    .third-color > .cell {
+      background: #3f5653;
+    }
+  </style>
+  <link rel="stylesheet" href="/dest/css/style.min.css">
+  <!-- Hi! If you want to know how the SASS grid works
+    then check out the sass folder and the .scss files -->
+</head>
+
+<body>
+<div class="row">
+  <div class="full col-12-of-12 secondary-color">
+    <div class="cell">
+      <h1>Simple responsive SASS Grid</h1>
+      <h2>
+        Download the grid from my <a href="https://github.com/Der-Alex/der-alex.github.io">GitHub</a> account.
+      </h2>
+    </div>
+  </div>
+  <div class="full col-12-of-12 third-color">
+    <div class="cell t-l">
+      <p>
+        This grid is kind of basic but has the most important features: Mobile first, push, pull and nesting.
+        The grid itsel is naked and comes with no styling at all. No grid cell padding, no colors, just grid.
+        So you have the full control of it.
+      </p>
+      <p>
+        With the mobile first approach we have some base classes. In my opinion there aren't more than four columns
+        needed, when using a small layout. So we have .full, .half, .one-third, .two-third, .one-quarter, .three-quarter
+        classes.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="full"><div class="cell">Full</div></div>
+  <div class="half"><div class="cell">Half</div></div>
+  <div class="half"><div class="cell">Half</div></div>
+  <div class="one-third"><div class="cell">One third</div></div>
+  <div class="two-third"><div class="cell">Two third</div></div>
+  <div class="one-quarter"><div class="cell">One quarter</div></div>
+  <div class="three-quarter"><div class="cell">Three quarter</div></div>
+  <div class="full col-12-of-12 third-color">
+    <div class="cell t-l">
+      <p>
+        For medium sized layouts, we can extend our classes with a m-*classname.
+        E.g.: m-full, m-half, m-one-third and so on.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="full m-full"><div class="cell">m-full</div></div>
+  <div class="full m-half"><div class="cell">m-half</div></div>
+  <div class="full m-half"><div class="cell">m-half</div></div>
+  <div class="full m-one-third"><div class="cell">m-one-third</div></div>
+  <div class="full m-two-third"><div class="cell">m-two-third</div></div>
+  <div class="full m-one-quarter"><div class="cell">m-one-quarter</div></div>
+  <div class="full m-three-quarter"><div class="cell">m-three-quarter</div></div>
+  <div class="full col-12-of-12 third-color">
+    <div class="cell t-l">
+      <p>
+        What brings us to the big sized layouts. Here you have full controll of the amount of columns.
+        Thanks to SASS variables we can give our grid a column amount. The default is 12 and is stored inside the
+        $column-count variable. Based on that number, the grid gets automatically created. SASS loops over the amount of
+        columns and creates a percentage based width for them.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-2-of-12"><div class="cell">col-2-of-12</div></div>
+  <div class="full col-2-of-12"><div class="cell">col-2-of-12</div></div>
+  <div class="full col-2-of-12"><div class="cell">col-2-of-12</div></div>
+  <div class="full col-2-of-12"><div class="cell">col-2-of-12</div></div>
+  <div class="full col-2-of-12"><div class="cell">col-2-of-12</div></div>
+  <div class="full col-2-of-12"><div class="cell">col-2-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-3-of-12"><div class="cell">col-3-of-12</div></div>
+  <div class="full col-3-of-12"><div class="cell">col-3-of-12</div></div>
+  <div class="full col-3-of-12"><div class="cell">col-3-of-12</div></div>
+  <div class="full col-3-of-12"><div class="cell">col-3-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-4-of-12"><div class="cell">col-4-of-12</div></div>
+  <div class="full col-4-of-12"><div class="cell">col-4-of-12</div></div>
+  <div class="full col-4-of-12"><div class="cell">col-4-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-5-of-12"><div class="cell">col-5-of-12</div></div>
+  <div class="full col-7-of-12"><div class="cell">col-7-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-6-of-12"><div class="cell">col-6-of-12</div></div>
+  <div class="full col-6-of-12"><div class="cell">col-6-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-8-of-12"><div class="cell">col-8-of-12</div></div>
+  <div class="full col-4-of-12"><div class="cell">col-4-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-9-of-12"><div class="cell">col-9-of-12</div></div>
+  <div class="full col-3-of-12"><div class="cell">col-3-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-10-of-12"><div class="cell">col-10-of-12</div></div>
+  <div class="full col-2-of-12"><div class="cell">col-2-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-11-of-12"><div class="cell">col-11-of-12</div></div>
+  <div class="full col-1-of-12"><div class="cell">col-1-of-12</div></div>
+</div>
+<div class="row">
+  <div class="full col-12-of-12 third-color">
+    <div class="cell t-l">
+      <p>
+        Also the grid creates push-n and pull-n columns based on the $column-count variable.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="half col-6-of-12 push-6"><div class="cell">First element pushed 6 columns</div></div>
+  <div class="half col-6-of-12 secondary-color pull-6"><div class="cell">Second element pulled 6 columns</div></div>
+</div>
+<div class="row">
+  <div class="full col-12-of-12 third-color">
+    <div class="cell t-l">
+      <p>
+        Last but not least, we can nest rows inside columns inside rows inside columns inside... okay i am sure
+        you get the point :-)
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="half">
+    <div class="row">
+      <div class="half"><div class="cell">Nesting</div></div>
+      <div class="half"><div class="cell">example</div></div>
+      <div class="half push-6"><div class="cell">First</div></div>
+      <div class="half secondary-color pull-6"><div class="cell">Second</div></div>
+    </div>
+  </div>
+  <div class="half"><div class="cell">I am not nested</div></div>
+</div>
+<div class="row">
+  <div class="full col-12-of-12 third-color">
+    <div class="cell t-l">
+      <p>
+        That's all! You can download the grid from my <a href="https://github.com/Der-Alex/der-alex.github.io">GitHub</a> account.
+      </p>
+      <p>
+        I am happy for every feedback or issues that you find. Also I really appreciate a short hint or message, if you use my grid.
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

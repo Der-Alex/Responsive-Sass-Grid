@@ -1,0 +1,25 @@
+{
+  "name": "SimpleSASSGrid",
+  "version": "0.0.3",
+  "author": "Der Alex",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Der-Alex/Responsive-Sass-Grid.git"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/grunt",
+    "serve": "./node_modules/.bin/lite-server -c lite-config.json"
+  },
+  "bugs": {
+    "url": "https://github.com/Der-Alex/Responsive-Sass-Grid/issues"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-combine-media-queries": "^1.0.20",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-sass": "^1.2.1",
+    "lite-server": "^2.2.2"
+  }
+}
