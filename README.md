@@ -24,8 +24,8 @@ You can use the following mobile first classes on the child elements for small l
 
 If you don't add any other mediaquery based class, these classes will work from small up to large layouts.
 
+For medium sized devices you can add a *m- prefix* to these classes, e.g. *.m-half* or *.m-two-third*.
 
-For medium sized devices you can add a *m- prefix* to these classes, e.g. *.m-half* or *.m-two-third*
 For large sized devices you can specify an amount of columns with the *$column-count* sass variable. The default value is 12.
 It generates *.col-n-of-m* classes, e.g. *.col-1-of-12* or *.col-4-of-12*. Also it generates *.push-n* and *.pull-n* classes for pushing and pulling these columns.
 
