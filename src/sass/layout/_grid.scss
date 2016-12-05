@@ -14,11 +14,11 @@
   The grid needs some default variables.
   These are:
   - $column-count: the amount of columns, default 12.
-  - $page-width: the maximum width of the page, default 80rem (1280px)
+  - $page-width: the maximum width of the page, default 100%
 */
 
 $column-count: 12 !default;
-$page-width: 80rem !default;
+$page-width: 100% !default;
 
 /*
   The grid rows need a clearfix.
@@ -144,6 +144,7 @@ $large: 64rem !default;
 .row {
   box-sizing: border-box;
   margin: 0 auto;
+  max-width: $page-width;
   overflow: hidden;
 
   /*
